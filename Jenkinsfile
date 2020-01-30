@@ -25,4 +25,7 @@ node{
         rtMaven.tool = 'Maven2'
         def buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
   }
+    stage("copying war to docker master"){
+        sh 'scp -pr target/*.jar root@10.128.0.16:/root'
+    }
  }
